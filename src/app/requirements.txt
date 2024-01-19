@@ -1,0 +1,10 @@
+clickhouse-connect
+pydantic-settings
+python-dotenv
+requests
+hvac
+pydantic
+cachetools
+fastapi
+uvicorn[standard]
+matplotlib
