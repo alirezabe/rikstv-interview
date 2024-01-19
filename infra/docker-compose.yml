@@ -149,6 +149,20 @@ services:
       - db_password
       - db_user
 
+  producer:
+    image: producer
+    env_file:
+      - .env_kafka
+
+  consumer:
+    image: consumer
+    env_file:
+      - .env_kafka
+
+  app:
+    image: app
+    env_file:
+      - .env_app
 
 secrets:
    db_password:

@@ -10,7 +10,8 @@ from config import get_settings
 
 
 def create_db_client(host: str, port: int, username: str, password: str) -> Client:
-    client = clickhouse_connect.get_client(host=host, port=port, username=username, password=password)
+    print(f"Connecting to {host}:{port}")
+    client = clickhouse_connect.get_client(host=host, port=port, username=username, password='')
     print(f'Connected to clickhouse_connect')
     return client
 
@@ -45,9 +46,10 @@ def create_kafka_consumer(topic_name: str, group_id: str, bootstrap_servers: Lis
 
 
 if __name__ == "__main__":
+    print(f'Starting consumer')
     settings = get_settings()
     my_consumer = create_kafka_consumer(topic_name=settings.kafka_topic_name, group_id=settings.kafka_group_id,
-                                        bootstrap_servers=settings.bootstrap_servers)
+                                        bootstrap_servers=settings.bootstrap_servers.split(','))
     client = create_db_client(settings.clickhouse_host, settings.clickhouse_port, settings.clickhouse_user,
                               settings.clickhouse_password)
     setup_db(client, settings.clickhouse_db, settings.clickhouse_table)

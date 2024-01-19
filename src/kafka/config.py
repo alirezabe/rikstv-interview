@@ -1,7 +1,6 @@
 import requests
 from cachetools import cached, TTLCache
 from pydantic_settings import BaseSettings
-from typing import List
 from provider.vault import Vault
 
 
@@ -10,7 +9,7 @@ class Settings(BaseSettings):
     kafka_group_id: str
     partitions: int
     replication_factor: int
-    bootstrap_servers: List[str]
+    bootstrap_servers: str
     clickhouse_host: str
     clickhouse_port: int
     clickhouse_user: str
