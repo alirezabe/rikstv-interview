@@ -149,6 +149,7 @@ services:
       - db_password
       - db_user
 
+
 secrets:
    db_password:
      file: db_password.txt
