@@ -1,0 +1,13 @@
+# fastapi~=0.109.0
+# uvicorn~=0.25.0
+# aiokafka~=0.10.0
+kafka-python
+clickhouse-connect
+pydantic-settings
+python-dotenv
+requests
+hvac
+pydantic
+cachetools
+fastapi
+uvicorn[standard]
