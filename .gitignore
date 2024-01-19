@@ -1,3 +1,5 @@
 /venv
 /.vscode
+/.idea
 sample_data.csv
+src/kafka/.env
