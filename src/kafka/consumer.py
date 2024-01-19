@@ -54,6 +54,7 @@ if __name__ == "__main__":
                               settings.clickhouse_password)
     setup_db(client, settings.clickhouse_db, settings.clickhouse_table)
     for message in my_consumer:
+        print(f'Received message: {message.key}, partition: {message.partition}')
         data = message.value
         client.insert(f'{settings.clickhouse_db}.{settings.clickhouse_table}', [
             [data['Number'], data['Step'], data['Value'], datetime.datetime.fromtimestamp(message.timestamp / 1e3)]],
