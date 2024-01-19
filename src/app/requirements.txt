@@ -8,3 +8,4 @@ cachetools
 fastapi
 uvicorn[standard]
 matplotlib
+gunicorn
