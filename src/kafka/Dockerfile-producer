@@ -1,0 +1,11 @@
+FROM python:3.11-slim
+COPY ./requirements.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
+
+WORKDIR /app/
+
+COPY producer.py .
+COPY config.py .
+COPY provider/ ./provider
+
+CMD ["python3", "producer.py"]
