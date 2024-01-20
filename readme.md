@@ -1,6 +1,23 @@
 RiksTV interview
 ================
-
+# Outline
+- [Architecture](#architecture)
+    - [Detail:](#detail)
+- [Installation methods](#installation-methods)
+    - [First build Docker images with running script:](#first-build-docker-images-with-running-script)
+    - [Second change running Env](#second-change-running-env)
+    - [3rd Run stack with Docker compose](#3rd-run-stack-with-docker-compose)
+    - [4th - can check web application Swagger](#4th---can-check-web-application-swagger)
+    - [5th - can see kafka status](#5th---can-see-kafka-status)
+    - [6th - Analytics Dashboard](#6th---analytics-dashboard)
+- [Answering the Questions](#answering-the-questions)
+    - [1st - Which number had the longest step chain](#1st---which-number-had-the-longest-step-chain)
+    - [2nd -  Which number went to the highest value](#2nd---which-number-went-to-the-highest-value)
+    - [3rd - is number x part of the step chain of another number.](#3rd---is-number-x-part-of-the-step-chain-of-another-number)
+    - [4th - Create a plot of all steps of number](#4th---create-a-plot-of-all-steps-of-number)
+    - [Dashboard](#dashboard)
+- [Scale project](#scale-project)
+- [Create topic or Scale topic partition](#create-topic-or-scale-topic-partition)
 ## Architecture
 
 This is picture of project architecture.
