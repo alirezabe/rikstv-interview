@@ -169,19 +169,41 @@ services:
     image: producer
     env_file:
       - .env_kafka
+    depends_on:
+      - kafka1
+      - kafka2
+      - kafka3
 
   consumer:
     image: consumer
     env_file:
       - .env_kafka
+    depends_on:
+      - kafka1
+      - kafka2
+      - kafka3
+      - clickhouse-server
+      - producer
 
   app:
     image: app
     env_file:
       - .env_app
     ports:
-      - "8080:80"
+      - "8000:80"
     command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+    depends_on:
+      - clickhouse-server
+
+  kafka-ui:
+    container_name: kafka-ui
+    image: provectuslabs/kafka-ui:latest
+    ports:
+      - 8080:8080
+    environment:
+      DYNAMIC_CONFIG_ENABLED: 'true'
+    volumes:
+      - kuidata:/etc/kafkaui/
 
 secrets:
    db_password:
@@ -198,3 +220,4 @@ volumes:
   zoo1data:
   zoo2data:
   zoo3data:
+  kuidata:
