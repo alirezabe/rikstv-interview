@@ -5,6 +5,7 @@ services:
     image: confluentinc/cp-zookeeper:7.3.2
     hostname: zoo1
     container_name: zoo1
+    restart: always
     volumes:
       - zoo1data:/var/lib/zookeeper
     ports:
@@ -18,6 +19,7 @@ services:
     image: confluentinc/cp-zookeeper:7.3.2
     hostname: zoo2
     container_name: zoo2
+    restart: always
     volumes:
       - zoo2data:/var/lib/zookeeper
     ports:
@@ -31,6 +33,7 @@ services:
     image: confluentinc/cp-zookeeper:7.3.2
     hostname: zoo3
     container_name: zoo3
+    restart: always
     volumes:
       - zoo3data:/var/lib/zookeeper
     ports:
@@ -46,6 +49,7 @@ services:
     image: confluentinc/cp-kafka:7.3.2
     hostname: kafka1
     container_name: kafka1
+    restart: always
     volumes:
       - kafka1data:/var/lib/kafka/data
     ports:
@@ -69,6 +73,7 @@ services:
     image: confluentinc/cp-kafka:7.3.2
     hostname: kafka2
     container_name: kafka2
+    restart: always
     volumes:
       - kafka2data:/var/lib/kafka/data
     ports:
@@ -92,6 +97,7 @@ services:
     image: confluentinc/cp-kafka:7.3.2
     hostname: kafka3
     container_name: kafka3
+    restart: always
     volumes:
       - kafka3data:/var/lib/kafka/data
     ports:
@@ -115,6 +121,7 @@ services:
     hostname: clickhouse-server
     container_name: clickhouse-server
     image: clickhouse/clickhouse-server
+    restart: always
     volumes:
       - clickhousedata:/var/lib/clickhouse
     ports:
@@ -129,6 +136,7 @@ services:
     image: metabase/metabase:latest
     container_name: metabase
     hostname: metabase
+    restart: always
     volumes:
     - /dev/urandom:/dev/random:ro
     - ./plugins/clickhouse.metabase-driver.jar:/plugins/clickhouse.jar:ro
@@ -154,6 +162,7 @@ services:
     image: postgres:latest
     container_name: postgres
     hostname: postgres
+    restart: always
     environment:
       POSTGRES_USER_FILE: /run/secrets/db_user
       POSTGRES_DB: metabase
@@ -198,6 +207,7 @@ services:
   kafka-ui:
     container_name: kafka-ui
     image: provectuslabs/kafka-ui:latest
+    restart: always
     ports:
       - 8080:8080
     environment:
