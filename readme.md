@@ -18,6 +18,9 @@ RiksTV interview
     - [Dashboard](#dashboard)
 - [Scale project](#scale-project)
 - [Create topic or Scale topic partition](#create-topic-or-scale-topic-partition)
+- [Terraform](#terraform-file)
+- [SQL Schema](#sql-schema-for-clickhouse)
+- [Server Spec](#server-spec)
 ## Architecture
 
 This is picture of project architecture.
@@ -292,3 +295,40 @@ For scale topic partition use this command
 ```shell
 docker exec kafka1 kafka-topics --alter --topic alireza.test --bootstrap-server kafka1:9092 --partitions 40
 ```
+
+# Terraform file
+we have for [Terraform](https://www.terraform.io/) files for setup cluster with Docker
+* [providers.tf](./infra/terraform/providers.tf) for Providers than need to deploy
+* [images.tf](./infra/terraform/images.tf) for Docker Image resources
+* [containers.tf](./infra/terraform/containers.tf) for Docker containers
+* [values.tf](./infra/terraform/volumes.tf) for Docker values
+
+After build all images with [build-all.sh](build-all.sh) script run this command to run cluster.
+
+```shell
+terraform init
+terraform plan -out rikstv.tfplan
+terraform apply
+```
+
+# Sql Schema for clickhouse
+I use a flat schema for storing data in clickhouse because [MergeTree](https://clickhouse.com/docs/en/engines/table-engines/mergetree-family/mergetree) in clickhouse has great performance for aggregation queries
+```sql
+CREATE TABLE IF NOT EXISTS TABLE_NAME 
+(
+        number UInt64,
+        step UInt64,
+        value UInt64,
+        timestamp DateTime
+)
+```
+
+# Server Spec
+The minimum Server spec for run this stack is:
+
+| Resource | Quantity |
+|----------|----------|
+| Process  | 8 vCore  |
+| Memory   | 12 GB    |
+| Storage  | 50 GB    |
+
