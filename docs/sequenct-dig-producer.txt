@@ -1,0 +1,14 @@
+title Consumer
+
+
+database Kafka
+
+participant producer
+
+database clickhouse
+
+producer->Kafka:get messages
+producer->producer: process message
+producer->clickhouse: save message
+clickhouse->producer: save successfully
+producer->Kafka: ack messages

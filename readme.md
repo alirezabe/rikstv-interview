@@ -332,3 +332,8 @@ The minimum Server spec for run this stack is:
 | Memory   | 12 GB    |
 | Storage  | 50 GB    |
 
+
+# Sequence Diagram
+[Sequence diagram](https://sequencediagram.org/) for producer is here:
+
+![Producer-Seq-Diq](./docs/img/producer-seq-dig.svg)
