@@ -67,7 +67,7 @@ class Item(BaseModel):
 # Which number had the longest step chain
 @app.get("/longest_step_chain")
 def longest_step_chain(db=Depends(get_db), settings=Depends(get_settings)):
-    result: QueryResult = db.query(f'SELECT number , count(step) FROM {settings.clickhouse_db}.{settings.clickhouse_table} group by number limit 1')
+    result: QueryResult = db.query(f'SELECT number , count(step) as cnt FROM {settings.clickhouse_db}.{settings.clickhouse_table} group by number ORDER BY cnt desc  limit 1')
     print(result.result_rows)
     return {"longest": result.result_rows[0][0]}
 
@@ -76,7 +76,7 @@ def longest_step_chain(db=Depends(get_db), settings=Depends(get_settings)):
 @app.get("/highest_value")
 def highest_value(db=Depends(get_db), settings=Depends(get_settings)):
     result: QueryResult = db.query(
-        f'SELECT number , step, value as cnt FROM {settings.clickhouse_db}.{settings.clickhouse_table} order by value desc limit 1')
+        f'SELECT number , step, value FROM {settings.clickhouse_db}.{settings.clickhouse_table} order by value desc limit 1')
     print(result.result_rows)
     return {"longest": result.result_rows[0][0]}
 
