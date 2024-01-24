@@ -337,3 +337,10 @@ The minimum Server spec for run this stack is:
 [Sequence diagram](https://sequencediagram.org/) for producer is here:
 
 ![Producer-Seq-Diq](./docs/img/consumer-seq-dig.png)
+
+# future
+temp: add vault, monitoring stack, log stack
+
+# production ready
+pods in kube
+kafka in bare in ceph
