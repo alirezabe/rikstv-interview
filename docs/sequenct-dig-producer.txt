@@ -3,12 +3,12 @@ title Consumer
 
 database Kafka
 
-participant producer
+participant consumer
 
 database clickhouse
 
-producer->Kafka:get messages
-producer->producer: process message
-producer->clickhouse: save message
-clickhouse->producer: save successfully
-producer->Kafka: ack messages
+consumer->Kafka:get messages
+consumer->consumer: process message
+consumer->clickhouse: save message
+clickhouse->consumer: save successfully
+consumer->Kafka: ack messages

@@ -336,4 +336,4 @@ The minimum Server spec for run this stack is:
 # Sequence Diagram
 [Sequence diagram](https://sequencediagram.org/) for producer is here:
 
-![Producer-Seq-Diq](./docs/img/producer-seq-dig.svg)
+![Producer-Seq-Diq](./docs/img/consumer-seq-dig.png)
